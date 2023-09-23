@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProduct, setOldData} from "../../store/productSlice";
+import { getAllProduct, setOldData } from "../../store/productSlice";
 import { toast } from "react-toastify";
 import "bootstrap/dist/css/bootstrap.css";
-
 
 const AddProductModal = ({ onClose }) => {
   const { data, oldData } = useSelector((state) => state.product);
@@ -20,6 +19,7 @@ const AddProductModal = ({ onClose }) => {
     const { name, value } = e.target;
     setProductData({ ...productData, [name]: value });
   };
+
   const handleSubmit = () => {
     if (productData.title == "") {
       return toast.error("Title is required!");
@@ -27,12 +27,12 @@ const AddProductModal = ({ onClose }) => {
     if (productData.description == "") {
       return toast.error("Description is required!");
     }
-    if (productData.price == "") {
-      return toast.error("Price is required!");
+    if (productData.price == "" || isNaN(productData.price)) {
+      return toast.error("Price must be a valid number!!");
     }
-    // if (productData.image == "") {
-    //   return toast.error("Image is required!");
-    // }
+    if (productData.image == "") {
+      return toast.error("Image is required!");
+    }
     const existingProducts = data;
     const newProduct = {
       id: data.length + 1,
@@ -40,11 +40,12 @@ const AddProductModal = ({ onClose }) => {
     };
     const updatedProducts = [newProduct, ...existingProducts];
     dispatch(getAllProduct(updatedProducts));
-    const oldDataUpdate = [newProduct, ...oldData]
-    dispatch(setOldData(oldDataUpdate))
-    toast.success("Product Added successfully");
+    const oldDataUpdate = [newProduct, ...oldData];
+    dispatch(setOldData(oldDataUpdate));
+    toast.success("Product Added successfully 👍");
     onClose();
   };
+
   return (
     <div
       className="modal fade show"

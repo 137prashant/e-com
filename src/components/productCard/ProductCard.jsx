@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import "./ProductCard.scss";
 import "bootstrap/dist/css/bootstrap.css";
 
-
 const ProductCard = ({ product, onDelete }) => {
   const navigate = useNavigate();
   const handleCardClick = () => {
@@ -19,26 +18,23 @@ const ProductCard = ({ product, onDelete }) => {
 
   return (
     <div className="card card-item">
-      <div onClick={handleCardClick} style={{
-        cursor:"pointer"
-      }}>
+      <div onClick={handleCardClick}>
         <div className="poster">
           <img src={product?.image} alt={product?.title} />
         </div>
         <div className="title">{text(product?.title, 55)}</div>
+      </div>
+      <div className="content">
+        <div className="price">${product?.price}</div>
+        <div className="delete-btn">
+          <button
+            className="btn btn-danger"
+            onClick={() => onDelete(product?.id)}
+          >
+            Delete
+          </button>
         </div>
-        <div className="content">
-          <div className="price">${product?.price}</div>
-          <div className="delete-btn">
-            <button
-              className="btn btn-danger"
-              onClick={() => onDelete(product?.id)}
-            >
-              Delete
-            </button>
-          </div>
-        </div>
-      
+      </div>
     </div>
   );
 };

@@ -2,8 +2,6 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./Info.scss";
-// import "bootstrap/dist/css/bootstrap.css";
-
 
 function Info() {
   const { id } = useParams();
@@ -23,12 +21,9 @@ function Info() {
             <div className="price">${product.price}</div>
             <div className="description">{product.description}</div>
             <div>
-            <button
-              type="button"
-              className="btn btn-primary mt-4 w-25"
-            >
-              Buy
-            </button>
+              <button type="button" className="btn btn-primary mt-4 w-25">
+                Buy
+              </button>
             </div>
           </div>
         </div>

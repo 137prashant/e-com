@@ -5,30 +5,26 @@ import { getAllProduct } from "../../store/productSlice";
 import "./HomePage.scss";
 import { toast } from "react-toastify";
 
-// import "bootstrap/dist/css/bootstrap.css";
-
-
 function Home() {
-  const { data } = useSelector((state) => state.product);
   const dispatch = useDispatch();
+  const { data } = useSelector((state) => state.product);
 
   const handleDeleteProduct = (productId) => {
     const updatedProducts = data?.filter((product) => product.id !== productId);
     dispatch(getAllProduct(updatedProducts));
-    toast.success("Product Deleted successfully");
-
+    toast.success("Product Deleted successfully👍");
   };
 
   return (
     <div className="product">
       <div className="product-list">
-      {data?.map((product) => (
-        <ProductCard
-          key={product.id}
-          product={product}
-          onDelete={handleDeleteProduct}
-        />
-      ))}
+        {data?.map((product) => (
+          <ProductCard
+            key={product.id}
+            product={product}
+            onDelete={handleDeleteProduct}
+          />
+        ))}
       </div>
     </div>
   );
