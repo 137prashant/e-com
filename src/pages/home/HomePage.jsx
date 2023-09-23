@@ -3,6 +3,8 @@ import ProductCard from "../../components/productCard/ProductCard";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProduct } from "../../store/productSlice";
 import "./HomePage.scss";
+import { toast } from "react-toastify";
+
 // import "bootstrap/dist/css/bootstrap.css";
 
 
@@ -13,10 +15,13 @@ function Home() {
   const handleDeleteProduct = (productId) => {
     const updatedProducts = data?.filter((product) => product.id !== productId);
     dispatch(getAllProduct(updatedProducts));
+    toast.success("Product Deleted successfully");
+
   };
 
   return (
-    <div className=" product-list">
+    <div className="product">
+      <div className="product-list">
       {data?.map((product) => (
         <ProductCard
           key={product.id}
@@ -24,6 +29,7 @@ function Home() {
           onDelete={handleDeleteProduct}
         />
       ))}
+      </div>
     </div>
   );
 }

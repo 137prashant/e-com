@@ -5,10 +5,11 @@ import Home from "./pages/home/HomePage";
 import Info from "./pages/info/InfoPage";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { getAllProduct } from "./store/productSlice";
+import { getAllProduct,setOldData } from "./store/productSlice";
 import AddProductModal from "./components/popup/AddProductModal";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 
 function App() {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         dispatch(getAllProduct(data));
+        dispatch(setOldData(data))
       })
       .catch((error) => {
         console.error("Error fetching data:", error);

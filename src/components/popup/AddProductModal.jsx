@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProduct } from "../../store/productSlice";
+import { getAllProduct, setOldData} from "../../store/productSlice";
 import { toast } from "react-toastify";
 import "bootstrap/dist/css/bootstrap.css";
 
 
 const AddProductModal = ({ onClose }) => {
-  const { data } = useSelector((state) => state.product);
+  const { data, oldData } = useSelector((state) => state.product);
   const dispatch = useDispatch();
 
   const [productData, setProductData] = useState({
@@ -40,6 +40,8 @@ const AddProductModal = ({ onClose }) => {
     };
     const updatedProducts = [newProduct, ...existingProducts];
     dispatch(getAllProduct(updatedProducts));
+    const oldDataUpdate = [newProduct, ...oldData]
+    dispatch(setOldData(oldDataUpdate))
     toast.success("Product Added successfully");
     onClose();
   };

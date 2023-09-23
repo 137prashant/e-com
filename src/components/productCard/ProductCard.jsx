@@ -19,7 +19,9 @@ const ProductCard = ({ product, onDelete }) => {
 
   return (
     <div className="card card-item">
-      <div onClick={handleCardClick}>
+      <div onClick={handleCardClick} style={{
+        cursor:"pointer"
+      }}>
         <div className="poster">
           <img src={product?.image} alt={product?.title} />
         </div>

@@ -3,11 +3,11 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "./Header.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProduct } from "../../store/productSlice";
+import { getAllProduct, setOldData } from "../../store/productSlice";
 
 function Header({ isOpen, setIsOpen }) {
   const dispatch = useDispatch();
-  const { data } = useSelector((state) => state.product);
+  const { data, oldData} = useSelector((state) => state.product);
   const location = useLocation();
   console.log("idddd", location);
   const navigate = useNavigate();
@@ -26,8 +26,10 @@ function Header({ isOpen, setIsOpen }) {
   const handleSortingOptionChange = (event) => {
     const selectedOption = event.target.value;
     setSortingOption(selectedOption);
-
     const sortedProducts = [...data];
+    if(selectedOption === 'default'){
+      return dispatch(getAllProduct(oldData));
+    }
     if (selectedOption === "low") {
       sortedProducts.sort((a, b) => a.price - b.price);
     } else if (selectedOption === "high") {

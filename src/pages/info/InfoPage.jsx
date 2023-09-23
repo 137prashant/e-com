@@ -14,7 +14,7 @@ function Info() {
   return (
     <div className="detail">
       {product ? (
-        <div className="product-details">
+        <div className="product-details card">
           <div className="image">
             <img src={product.image} alt={product.title} />
           </div>
@@ -22,6 +22,14 @@ function Info() {
             <div className="title">{product.title}</div>
             <div className="price">${product.price}</div>
             <div className="description">{product.description}</div>
+            <div>
+            <button
+              type="button"
+              className="btn btn-primary mt-4 w-25"
+            >
+              Buy
+            </button>
+            </div>
           </div>
         </div>
       ) : (

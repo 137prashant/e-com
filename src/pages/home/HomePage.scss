@@ -1,8 +1,12 @@
-.product-list {
-    display: flex;
-    flex-wrap: wrap; 
-    justify-content: flex-start;
-    padding: 20px;
+.product {
+
     padding-top: 100px;
-    gap: 10px; 
+
+    .product-list{
+      display: flex;
+      flex-wrap: wrap; 
+      justify-content: center;
+      padding: 20px;
+      gap: 10px; 
+    }
   }

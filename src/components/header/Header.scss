@@ -7,7 +7,6 @@
     align-items: center;
     width:100%;
     height: 65px;
-    // background:black;
     max-width: 100%;
     padding: 0 20px;
     transition: all ease 0.5s;
@@ -17,10 +16,8 @@
     &.top {
         background: rgba(0, 0, 0, 0.25);
         backdrop-filter: blur(4.5px);
-        // -webkit-backdrop-filter: blur(3.5px);
     }
     &.show {
-        // background-color: var(--black3);
         background-color: black;
     }
     .button{
@@ -29,9 +26,9 @@
     }
     img{
         margin-left: -27px;
-        margin-top: 71px;
-        height: 189px;
-        width: 275px;
+        margin-top: 78px;
+        height: 205px;
+        width: 265px;
         cursor: pointer;
     }
     h2{
