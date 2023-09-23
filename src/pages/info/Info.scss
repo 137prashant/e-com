@@ -1,0 +1,40 @@
+.detail {
+    display: flex;
+
+    min-height: 100vh;
+    padding: 15px;
+    .product-details {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      .image {
+        flex: 1;
+        text-align: center;
+        img {
+          height: 450px;
+          width: 350px;
+        }
+      }
+      .content {
+        padding-left: 20px;
+        .title {
+          font-size: 24px;
+          font-weight: bold;
+        }
+        .price {
+          font-size: 18px;
+          font-weight: 550;
+          color: #007bff; 
+        }
+        .description {
+          margin-top: 10px;
+          font-size: 16px;
+        }
+      }
+    }
+    .alert {
+      margin-top: 150px;
+    }
+}
+  
+
